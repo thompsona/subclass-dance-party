@@ -4,13 +4,17 @@ var Dancer = function(top, left, timeBetweenSteps){
   this.$node = $('<span class="dancer"></span>');
   this.step();
   this.setPosition(top, left);
+  this._timeBetweenSteps = timeBetweenSteps;
 };
 
 Dancer.prototype.step = function(){
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   var root = this;
-  setTimeout(root.step, this.timeBetweenSteps);
+  var stepper = function() {
+    root.step();
+  };
+  setTimeout(stepper, this._timeBetweenSteps);
 };
 
 Dancer.prototype.setPosition = function(top, left) {

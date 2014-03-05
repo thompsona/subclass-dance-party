@@ -6,7 +6,7 @@ var Mover = function(top, left, timeBetweenSteps){
 
 };
 
-Mover.prototype = new Dancer();
+Mover.prototype = Object.create(Dancer.prototype);
 Mover.prototype.constructor = Mover;
 
 Mover.prototype.step = function(){
